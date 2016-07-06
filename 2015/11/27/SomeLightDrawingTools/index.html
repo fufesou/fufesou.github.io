@@ -1,0 +1,737 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="UMLet graphviz plantuml mscgen Graph-Easy DrawIt," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="fufesou's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="不会画图的程序员，要么很牛，要么…不牛。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一些轻量级的画图工具">
+<meta property="og:url" content="http://yoursite.com/2015/11/27/SomeLightDrawingTools/index.html">
+<meta property="og:site_name" content="fufesou's blog">
+<meta property="og:description" content="不会画图的程序员，要么很牛，要么…不牛。">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/school_Mindjet.jpg">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/UMLet.svg">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/tree.svg">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/pu.svg">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/mscgen_1.svg">
+<meta property="og:image" content="http://yoursite.com/img/tools_graph/mscgen_2.svg">
+<meta property="og:updated_time" content="2016-03-11T19:00:50.502Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一些轻量级的画图工具">
+<meta name="twitter:description" content="不会画图的程序员，要么很牛，要么…不牛。">
+<meta name="twitter:image" content="http://yoursite.com/img/tools_graph/school_Mindjet.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 一些轻量级的画图工具 | fufesou's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">fufesou's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">fight, sth get</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一些轻量级的画图工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Veröffentlicht am
+            <time itemprop="dateCreated" datetime="2015-11-27T18:37:26+08:00" content="2015-11-27">
+              2015-11-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; in
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/General-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">General Tools</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/27/SomeLightDrawingTools/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/27/SomeLightDrawingTools/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>不会画图的程序员，要么很牛，要么…不牛。<br><a id="more"></a></p>
+<blockquote>
+<p>本文能用矢量图的地方都用的矢量图，如果看不清楚，请点击图片，再缩放图片查看。</p>
+</blockquote>
+<h2 id="visio"><a href="#visio" class="headerlink" title="visio"></a>visio</h2><p>最常见的画图工具是visio，但如果不是用在MS office上，要用它画图就难受了。首先，用visio 2010画图后，还需要装个Adobe Acrobat Pro*才能得到矢量图(PDF)。然后是visio的。其次visio图片给我们过于高的自由度，布局和颜色都可心随意控制，甚至可以通过脚本画图，给专业画图的人来说或许合适，但对多数人来说，就难以收益。所以visio逼格不高，或者逼格太高，反正不适合我了。</p>
+<h2 id="Mindjet-MindManager"><a href="#Mindjet-MindManager" class="headerlink" title="Mindjet MindManager"></a>Mindjet MindManager</h2><p>Mindjet MindManager 15宣称是用来画思维导图的，操作界面非常简约。<br><img src="/img/tools_graph/school_Mindjet.jpg" alt="Mindjet MindManager 15操作界面"><br>Mindjet MindManager 15对用户限制很大，甚至只能绘制树状图。尽管非常美观，但Mindjet MindManager 15用来画图仍然不理想。因为它无法保存成矢量图，就算保存成pdf，也只能用它的插件来显示(和操作)。</p>
+<h2 id="UMLet"><a href="#UMLet" class="headerlink" title="UMLet"></a>UMLet</h2><p><a href="http://www.umlet.com/" target="_blank" rel="external">UMLet</a>是跨平台(windows, linux)轻量可视化UML绘图工具，入手非常简单，自动吸附和java简单扩展也做得不错，可以导出位图和适量图。另外UMLet还有web端，使用方便。<br><img src="/img/tools_graph/UMLet.svg" alt="UMLet实例"><br>但是UMLet 13.3存在一个严重的bug，保存时，相连的结点和线有时会断开(这也迫使我放弃了这么一个非常好用的工具)。</p>
+<h2 id="graphviz"><a href="#graphviz" class="headerlink" title="graphviz"></a>graphviz</h2><p><a href="http://www.graphviz.org/" target="_blank" rel="external">graphviz</a>可谓大名顶顶，很多自动布局绘图工具都调用它的底层接口，其本身也可以直接绘图。相对于前两者，它的优点是：</p>
+<ul>
+<li>免费</li>
+<li>跨平台</li>
+<li>自动布局</li>
+<li>可保存多种位图和矢量图格式</li>
+<li>扩展性强(提供了C, python等调用接口，可自己扩展)</li>
+<li>轻量<br>graphviz的缺点相对前两者也比较明显:</li>
+<li>需要查看dot语法(对于写程序的来说，这都不算事儿)</li>
+<li>无法竖排对齐<br>目前我对graphviz的使用也仅限于入门级，不过本文作为介绍文，无伤大雅吧^v^。关于<a href="http://www.graphviz.org/" target="_blank" rel="external">graphviz</a>，还请看官网介绍。下面是比较复杂的图形绘制，一定程度上控制了竖排对齐。<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">digraph </span>vertex_classification &#123;</div><div class="line">    node [style=<span class="string">"rounded,filled"</span>, width=<span class="number">0</span>, height=<span class="number">0</span>, <span class="keyword">shape=box, </span> concentrate=true]<span class="comment">;</span></div><div class="line"></div><div class="line">    &#123;</div><div class="line">        rank=same<span class="comment">;</span></div><div class="line">        mv [label=<span class="string">"model vertex"</span>, color=<span class="string">"#338833"</span>]<span class="comment">;</span></div><div class="line">        pmv [<span class="keyword">shape=point];</span></div><div class="line">        mv -&gt; pmv [arrowhead=none]<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &#123;</div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            pc0l [<span class="keyword">shape=point];</span></div><div class="line">            pc0r [<span class="keyword">shape=point];</span></div><div class="line">            pc0l -&gt; pc0r [label=<span class="string">"classify by movement"</span>, arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            pfs [<span class="keyword">shape=point];</span></div><div class="line">            fsv [label=<span class="string">"front side vertex"</span>, color=<span class="string">"cyan"</span>]<span class="comment">;</span></div><div class="line">            pfs -&gt; fsv [arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            pbs [<span class="keyword">shape=point];</span></div><div class="line">            <span class="keyword">bsv </span>[label=<span class="string">"back side vertex"</span>, color=<span class="string">"cyan"</span>]<span class="comment">;</span></div><div class="line">            pbs -&gt; <span class="keyword">bsv </span>[arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        pfs -&gt; pc0r -&gt; pbs [arrowhead=none]<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &#123;</div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            pc1l [<span class="keyword">shape=point];</span></div><div class="line">            pc1r [<span class="keyword">shape=point];</span></div><div class="line">            pc1l -&gt; pc1r [label=<span class="string">"classify by texture update"</span>, arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            ptu [<span class="keyword">shape=point];</span></div><div class="line">            tuv [label=<span class="string">"front head"</span>, color=<span class="string">"#883333"</span>]<span class="comment">;</span></div><div class="line">            ptu -&gt; tuv [arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        &#123;</div><div class="line">            rank=same<span class="comment">;</span></div><div class="line">            ptnu [<span class="keyword">shape=point];</span></div><div class="line">            tnuv [label=<span class="string">"back head, ear, hair"</span>, color=<span class="string">"#883333"</span>]<span class="comment">;</span></div><div class="line">            ptnu -&gt; tnuv [arrowhead=none]<span class="comment">;</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ptu -&gt; pc1r -&gt; ptnu [arrowhead=none]<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    pc0l -&gt; pmv -&gt; pc1l [arrowhead=none]<span class="comment">;</span></div><div class="line"></div><div class="line">    edge [style=<span class="string">"invis"</span>]<span class="comment">;</span></div><div class="line">    <span class="keyword">bsv </span>-&gt; tuv<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/img/tools_graph/tree.svg" alt="竖排对齐的树状图"></p>
+<h2 id="plantuml"><a href="#plantuml" class="headerlink" title="plantuml"></a>plantuml</h2><p><a href="http://zh.plantuml.com/" target="_blank" rel="external">plantuml</a>是用来画uml图的，用户量非常大，但官方网页看起来像是杂货铺。plantuml底层调用graphivz，因此也是自动布局工具。既然planuml在graphviz上进行了封装，很多时候自然是比graphviz好用。</p>
+<p>plantuml画不同的uml图时，语法也略有差异，但整体上都非常好用。比如绘制类图时，跟写程序没什么两样。另外plantuml是需要java运行环境的，也因此是跨平台的。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@startuml</span></div><div class="line"></div><div class="line">' skinparam classAttributeIconSize <span class="number">0</span></div><div class="line">skinparam defaultFontname Consolas</div><div class="line"></div><div class="line">class Base &#123;</div><div class="line">    + <span class="selector-tag">funcA</span>(void) : <span class="selector-tag">void</span></div><div class="line">    + <span class="selector-tag">funcB</span>(int, void*) : <span class="selector-tag">int</span></div><div class="line"></div><div class="line">    <span class="selector-tag">-</span> &#123;<span class="selector-tag">abstract</span>&#125; <span class="selector-tag">func_abstract</span>(int) : <span class="selector-tag">void</span></div><div class="line"></div><div class="line">    <span class="selector-tag">-</span> <span class="selector-tag">m_mem</span> : <span class="selector-tag">int</span> </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">class</span> <span class="selector-tag">Derive</span> &#123;</div><div class="line">    + funcB(void) : <span class="selector-tag">void</span></div><div class="line">    + <span class="selector-tag">m_mem</span> : <span class="selector-tag">int</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">Base &lt;|-- Derive</div><div class="line"></div><div class="line"><span class="variable">@enduml</span></div></pre></td></tr></table></figure>
+<p><img src="/img/tools_graph/pu.svg" alt="plantuml类图示例"></p>
+<p>plantuml也能绘制ascii art图，效果如下图所示。</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">,------.          ,------.</div><div class="line">|<span class="string">client</span>|<span class="string">          </span>|<span class="string">server</span>|</div><div class="line">`--+---'          `--+---'</div><div class="line">   |<span class="string">      request    </span>|</div><div class="line">   |<span class="string"> ----------------&gt;</span></div><div class="line">   |<span class="string">                 </span>|</div><div class="line">   |<span class="string">       reply     </span>|</div><div class="line">   |<span class="string"> &lt;- - - - - - - -</span></div><div class="line">   |<span class="string">                 </span>|</div><div class="line">   |<span class="string">----.            </span>|</div><div class="line">   |<span class="string">    </span>|<span class="string"> react      </span>|</div><div class="line">   |<span class="string">&lt;---'            </span>|</div><div class="line">,--+---.          ,--+---.</div><div class="line">|<span class="string">client</span>|<span class="string">          </span>|<span class="string">server</span>|</div><div class="line">`------'          `------'</div></pre></td></tr></table></figure>
+<h2 id="mscgen"><a href="#mscgen" class="headerlink" title="mscgen"></a>mscgen</h2><p>mscgen<a href="http://www.mcternan.me.uk/mscgen/" target="_blank" rel="external">4</a>是专门用来绘制通信图的工具，它同样是轻量跨平台的。mscgen弥补了graphviz绘制通信图的麻烦(排版)和plantuml的无力(plantuml似乎无法绘制信息丢失的图”–x”)。<br>mscgen的语法类似于graphviz，使用也很方便，官方使用文档只有一页，mscgen的命令参数也只有6个左右。当然，mscgen也可以生成位图和矢量图。如下摘抄mscgen<a href="http://www.mcternan.me.uk/mscgen/" target="_blank" rel="external">4</a>官网的两个例子。<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># MSC for some fictional process</span></div><div class="line">msc &#123;</div><div class="line">  hscale = <span class="string">"2"</span><span class="comment">;</span></div><div class="line"></div><div class="line">  a,<span class="keyword">b,c;</span></div><div class="line"></div><div class="line">  a-&gt;<span class="keyword">b </span>[ label = <span class="string">"ab()"</span> ] <span class="comment">;</span></div><div class="line">  <span class="keyword">b-&gt;c </span>[ label = <span class="string">"bc(TRUE)"</span>]<span class="comment">;</span></div><div class="line">  c=&gt;c [ label = <span class="string">"process(1)"</span> ]<span class="comment">;</span></div><div class="line">  c=&gt;c [ label = <span class="string">"process(2)"</span> ]<span class="comment">;</span></div><div class="line">  ...<span class="comment">;</span></div><div class="line">  c=&gt;c [ label = <span class="string">"process(n)"</span> ]<span class="comment">;</span></div><div class="line">  c=&gt;c [ label = <span class="string">"process(END)"</span> ]<span class="comment">;</span></div><div class="line">  a&lt;&lt;=c [ label = <span class="string">"callback()"</span>]<span class="comment">;</span></div><div class="line">  ---  [ label = <span class="string">"If more to run"</span>, ID=<span class="string">"*"</span> ]<span class="comment">;</span></div><div class="line">  a-&gt;a [ label = <span class="string">"next()"</span>]<span class="comment">;</span></div><div class="line">  a-&gt;c [ label = <span class="string">"ac1()\nac2()"</span>]<span class="comment">;</span></div><div class="line">  <span class="keyword">b&lt;-c </span>[ label = <span class="string">"cb(TRUE)"</span>]<span class="comment">;</span></div><div class="line">  <span class="keyword">b-&gt;b </span>[ label = <span class="string">"stalled(...)"</span>]<span class="comment">;</span></div><div class="line">  a&lt;-<span class="keyword">b </span>[ label = <span class="string">"ab() = FALSE"</span>]<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="/img/tools_graph/mscgen_1.svg" width="900" height="1400" alt="client server通信" align="center"></p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># Fictional client-server protocol</div><div class="line">msc &#123;</div><div class="line"> arcgradient = <span class="number">8</span>;</div><div class="line"></div><div class="line"> a [<span class="built_in">label</span>=<span class="string">"Client"</span>],b [<span class="built_in">label</span>=<span class="string">"Server"</span>];</div><div class="line"></div><div class="line"> a=&gt;b [<span class="built_in">label</span>=<span class="string">"data1"</span>];</div><div class="line"> a-xb [<span class="built_in">label</span>=<span class="string">"data2"</span>];</div><div class="line"> a=&gt;b [<span class="built_in">label</span>=<span class="string">"data3"</span>];</div><div class="line"> a&lt;=b [<span class="built_in">label</span>=<span class="string">"ack1, nack2"</span>];</div><div class="line"> a=&gt;b [<span class="built_in">label</span>=<span class="string">"data2"</span>, arcskip=<span class="string">"1"</span>];</div><div class="line"> |||;</div><div class="line"> a&lt;=b [<span class="built_in">label</span>=<span class="string">"ack3"</span>];</div><div class="line"> |||;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="/img/tools_graph/mscgen_2.svg" alt="mscgen例_2"></p>
+<h2 id="Graph-Easy"><a href="#Graph-Easy" class="headerlink" title="Graph-Easy"></a>Graph-Easy</h2><p><a href="http://search.cpan.org/~shlomif/Graph-Easy-0.75/lib/Graph/Easy.pm" target="_blank" rel="external">Graph-Easy</a>也是自动布局的跨平台绘图工具，一定程度上比graphviz更好用。相对于graphviz，它的好处是：</p>
+<ul>
+<li>语法简单(支持的图形元素也自然没graphviz多)</li>
+<li>与graphviz兼容，并且支持ascii art绘制</li>
+</ul>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">'Graph_Easy.txt'</span></div><div class="line">( <span class="symbol">AB</span></div><div class="line">  [ <span class="symbol">A</span> ] --&gt; [ <span class="symbol">B</span> ] )</div><div class="line">( <span class="symbol">CDE</span></div><div class="line">  [ <span class="symbol">C</span> ], [ <span class="symbol">D</span> ] --&gt; [ <span class="symbol">E</span> ] )</div><div class="line"></div><div class="line">[ <span class="symbol">A</span> ] --&gt; [ <span class="symbol">E</span> ]</div></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'Graph_Easy.pl'</span></div><div class="line"><span class="keyword">use</span> <span class="symbol">Graph:</span><span class="symbol">:Easy</span><span class="symbol">:</span><span class="symbol">:Parser</span>;</div><div class="line"></div><div class="line">print <span class="symbol">Graph:</span><span class="symbol">:Easy</span><span class="symbol">:</span><span class="symbol">:Parser-&gt;new</span>()-&gt;from_file(<span class="string">"Graph_Easy.txt"</span>)-&gt;as_ascii();</div></pre></td></tr></table></figure>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">'output'</span></div><div class="line"><span class="literal">+</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">+</span></div><div class="line"><span class="comment">'</span> <span class="comment">AB</span>              <span class="comment">'</span></div><div class="line"><span class="comment">'</span>                 <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>     <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="comment">|</span> <span class="comment">A</span> <span class="comment">|</span> <span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">|</span> <span class="comment">B</span> <span class="comment">|</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>     <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span>                 <span class="comment">'</span></div><div class="line"><span class="literal">+</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">+</span></div><div class="line">    <span class="comment">|</span></div><div class="line">    <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></div><div class="line">              <span class="comment">v</span></div><div class="line"><span class="literal">+</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">+</span></div><div class="line"><span class="comment">'</span> <span class="comment">CDE</span>                         <span class="comment">'</span></div><div class="line"><span class="comment">'</span>                             <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>     <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>       <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="comment">|</span> <span class="comment">C</span> <span class="comment">|</span> <span class="literal">-</span><span class="literal">-</span>&gt; <span class="comment">|</span> <span class="comment">E</span> <span class="comment">|</span> &lt;<span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span> <span class="comment">|</span> <span class="comment">D</span> <span class="comment">|</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span> <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>     <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>       <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span> <span class="comment">'</span></div><div class="line"><span class="comment">'</span>                             <span class="comment">'</span></div><div class="line"><span class="literal">+</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">-</span> <span class="literal">+</span></div></pre></td></tr></table></figure>
+<p>Graph-Easy绘制时，可以写简单的脚本语法，再用perl的parser解析脚本解析，过程并不复杂。</p>
+<h2 id="DrawIt"><a href="#DrawIt" class="headerlink" title="DrawIt"></a>DrawIt</h2><p>如图使用vim的图，绘制ascii art图可以选择DrawIt插件。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UMLet-graphviz-plantuml-mscgen-Graph-Easy-DrawIt/" rel="tag">#UMLet graphviz plantuml mscgen Graph-Easy DrawIt</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/07/MetaProgramming-Ruby-1-1/" rel="prev" title="The M Word">
+                The M Word <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+    <!-- 多说评论框 start -->
+    	<div class="ds-thread" data-thread-key="<%= post.layout %>-<%= post.slug %>" data-title="<%= post.title %>" data-url="<%= page.permalink %>"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fufesou"};
+    	(function() {
+    		var ds = document.createElement('script');
+    		ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    		ds.charset = 'UTF-8';
+    		(document.getElementsByTagName('head')[0] 
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    	})();
+    	</script>
+    <!-- 多说公共JS代码 end -->
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="fufesou" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">fufesou</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Kategorien</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#visio"><span class="nav-number">1.</span> <span class="nav-text">visio</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mindjet-MindManager"><span class="nav-number">2.</span> <span class="nav-text">Mindjet MindManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UMLet"><span class="nav-number">3.</span> <span class="nav-text">UMLet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graphviz"><span class="nav-number">4.</span> <span class="nav-text">graphviz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plantuml"><span class="nav-number">5.</span> <span class="nav-text">plantuml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mscgen"><span class="nav-number">6.</span> <span class="nav-text">mscgen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Easy"><span class="nav-number">7.</span> <span class="nav-text">Graph-Easy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DrawIt"><span class="nav-number">8.</span> <span class="nav-text">DrawIt</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fufesou</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'fufesou';
+      var disqus_identifier = '2015/11/27/SomeLightDrawingTools/';
+      var disqus_title = '一些轻量级的画图工具';
+      var disqus_url = 'http://yoursite.com/2015/11/27/SomeLightDrawingTools/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+  <a href="https://github.com/fufesou"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/121cd7cbdc3e4855075ea8b558508b91ac463ac2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png"></a>
+
+</body>
+</html>

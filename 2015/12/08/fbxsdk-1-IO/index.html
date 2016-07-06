@@ -1,0 +1,768 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="fbxsdk translation import/export," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="fufesou's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="FBX SDK用于载入和导出fbx格式的3维模型。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fbxsdk file inport/export(译)">
+<meta property="og:url" content="http://yoursite.com/2015/12/08/fbxsdk-1-IO/index.html">
+<meta property="og:site_name" content="fufesou's blog">
+<meta property="og:description" content="FBX SDK用于载入和导出fbx格式的3维模型。">
+<meta property="og:updated_time" content="2016-03-11T19:00:50.606Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="fbxsdk file inport/export(译)">
+<meta name="twitter:description" content="FBX SDK用于载入和导出fbx格式的3维模型。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> fbxsdk file inport/export(译) | fufesou's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">fufesou's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">fight, sth get</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                fbxsdk file inport/export(译)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Veröffentlicht am
+            <time itemprop="dateCreated" datetime="2015-12-08T10:31:57+08:00" content="2015-12-08">
+              2015-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; in
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Graphics/" itemprop="url" rel="index">
+                    <span itemprop="name">Graphics</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/12/08/fbxsdk-1-IO/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/08/fbxsdk-1-IO/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>FBX SDK用于载入和导出fbx格式的3维模型。<br><a id="more"></a></p>
+<h2 id="fbxsdk命名规则"><a href="#fbxsdk命名规则" class="headerlink" title="fbxsdk命名规则"></a>fbxsdk命名规则</h2><table><br><tr><td><em>Prefix</em></td><td><em>Notes</em></td></tr><br><tr><td>KFbx</td><td>大多数FBX SDK的类名前缀. 如: KFbxNode, KFbxScene, KFbxCamera</td></tr><br><tr><td>K</td><td>很实用组件类都以K开头. 如: KString, KFCurve, KTime</td></tr><br><tr><td>p</td><td>成员函数的参数由p开头. 如: pWriteFileFormat, pScene, pFilename</td></tr><br><tr><td>l</td><td>局部变量(local varialbes)以l开头. 如: lWriteFileFormat, lScene, lFilename</td></tr><br><tr><td>g</td><td>全局变量由g开头. 如: gStart, gStop, gCurrentTime</td></tr><br><tr><td>m</td><td>成员变量(属性)由m开头. 如: mDescription, mImportname, mSelect</td></tr><br></table>
+
+<h2 id="通过SDK-manager管理内存-Managing-memory-with-the-SDK-manager"><a href="#通过SDK-manager管理内存-Managing-memory-with-the-SDK-manager" class="headerlink" title="通过SDK manager管理内存(Managing memory with the SDK manager)"></a>通过SDK manager管理内存(Managing memory with the SDK manager)</h2><p>KFbxSdkManager(有时也称作SDK manager)是FBX SDK的内存管理者。初始化或者销毁FBX对象都要用到KFbxSdkManager类。<br>FBX应用通常都是以创建一个SDK manager对象开始，并且一般情况下，一个应用也只需要一个SDK manager对象。<br>如下代码展示了如何声明并初始化一个SDK manger对象。<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">KFbxSdkManager* mySdkManager = <span class="built_in">NULL</span>;</div><div class="line"><span class="attr">...</span></div><div class="line">mySdkManager = KFbxSdkManager<span class="type">::Create</span>();</div></pre></td></tr></table></figure></p>
+<p>几乎所有FBK SDK的类有Create()和Destory()。</p>
+<h3 id="初始化-创建-一个FBX类对象"><a href="#初始化-创建-一个FBX类对象" class="headerlink" title="初始化(创建)一个FBX类对象"></a>初始化(创建)一个FBX类对象</h3><ol>
+<li>调用Create()</li>
+<li>传递SDK manager对象，作为参数</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// <span class="keyword">Create</span> a scene <span class="keyword">object</span></div><div class="line">KFbxScene* myScene = KFbxScene::<span class="keyword">Create</span>(mySdkManager, <span class="string">""</span>);</div><div class="line"></div><div class="line">// <span class="keyword">Create</span> a node <span class="keyword">object</span></div><div class="line">KFbxNode* myNode = KFbxNode::<span class="keyword">Create</span>(mySdkManager, <span class="string">""</span>);</div><div class="line"></div><div class="line">// <span class="keyword">Create</span> am importer <span class="keyword">object</span></div><div class="line">KFbxImporter* myImporter = KFbxImporter::<span class="keyword">Create</span>(mySdkManager, <span class="string">""</span>);</div></pre></td></tr></table></figure>
+<p>Create()的SDK manger对象参数将会为所要创建的FBX 对象分配内存。</p>
+<blockquote>
+<p>一般情况下，一个FBX应用只需要一个SDK manager对象，但我们可以创建多个。</p>
+</blockquote>
+<p>Create()的第二个参数是可选对象名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// <span class="keyword">Create</span> a scene <span class="keyword">object</span></div><div class="line">KFbxScene* myScene = KFbxScene::<span class="keyword">Create</span>(mySdkManager, <span class="string">"My Scene"</span>);</div><div class="line"></div><div class="line">// <span class="keyword">Create</span> a node <span class="keyword">object</span></div><div class="line">KFbxNode* myNode = KFbxNode::<span class="keyword">Create</span>(mySdkManager, <span class="string">"My Node"</span>);</div><div class="line"></div><div class="line">// <span class="keyword">Create</span> am importer <span class="keyword">object</span></div><div class="line">KFbxImporter* myImporter = KFbxImporter::<span class="keyword">Create</span>(mySdkManager, <span class="string">"My Importer"</span>);</div></pre></td></tr></table></figure>
+<h3 id="销毁FBX类对象"><a href="#销毁FBX类对象" class="headerlink" title="销毁FBX类对象"></a>销毁FBX类对象</h3><p>调用Destory()即可。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Destroy three objects</span></div><div class="line">myImporter-&gt;<span class="selector-tag">Destroy</span>();</div><div class="line">myNode-&gt;<span class="selector-tag">Destroy</span>();</div><div class="line">myExporter-&gt;<span class="selector-tag">Destroy</span>();</div></pre></td></tr></table></figure>
+<h3 id="销毁FBX类对象时注意"><a href="#销毁FBX类对象时注意" class="headerlink" title="销毁FBX类对象时注意"></a>销毁FBX类对象时注意</h3><ul>
+<li>销毁FBX类对象释放的空间可以被SDK manager复用(new对象时)。</li>
+<li>销毁FBX类对象进，无需指定SDK manager。每个FBX对象在创建时都会与创建它的SDK manager建立一个双向引用。</li>
+<li>必须调用对象的Destory()来销毁对象。SDK manager会更新其他所有FBX对象与销毁对象的关联(<em>connections</em>)。</li>
+<li>关于<em>connectsion</em>，请查阅Connections.</li>
+</ul>
+<h3 id="清理FBX应用内存"><a href="#清理FBX应用内存" class="headerlink" title="清理FBX应用内存"></a>清理FBX应用内存</h3><p>使用完FBX SDK后，调用SDK manager的<code>Destory()</code>来清理内存。<br>调用SDK manager的<code>Destory()</code>同时也会销毁所有的FBX SDK对象。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Delete the FBX SDK manager.</span></div><div class="line"><span class="comment">// All the object taht</span></div><div class="line"><span class="comment">// (1) have been allocated by the memory manager, AND that</span></div><div class="line"><span class="comment">// (2) have not been explicitly destoryed</span></div><div class="line"><span class="comment">// will be automatically destoryed.</span></div><div class="line"><span class="keyword">if</span> (pSdkManager) pSdkmanager-&gt;Destory();</div></pre></td></tr></table></figure>
+<h2 id="创建空场景-Creating-am-emptry-secne"><a href="#创建空场景-Creating-am-emptry-secne" class="headerlink" title="创建空场景(Creating am emptry secne)"></a>创建空场景(Creating am emptry secne)</h2><p>场景是3维场景元素(meshes, NURBS, cameras, lights, etc)的容器。一个FBX文件有且仅有一个场景。但我们的FBX应用可以包含多个场景。</p>
+<p>场景的元素在FBX场景中以场景图(<em>scene graph</em>)的节点形式存在。在FBX中，场景图是树形结构，其中每个节点都有一个<br>表明节点包含a mesh, a camera, a light等的结构属性(<em>node attribute</em>)。</p>
+<p>在载入FBX文件(或者fbxsdk支持的其他格式文件)之前，必须创建一个场景，用这个场景来装载文件里的数据。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// <span class="keyword">Create</span> am FBX scene <span class="keyword">object</span></div><div class="line">KFbxScene* myScene = KFbxScene::<span class="keyword">Create</span>(mySdkManager, <span class="string">""</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="创建文件impoter-Creating-a-file-impoter"><a href="#创建文件impoter-Creating-a-file-impoter" class="headerlink" title="创建文件impoter(Creating a file impoter)"></a>创建文件impoter(Creating a file impoter)</h2><p>载入文件到FBX场景中，必须先创建<em>impoter</em>对象。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Create an importer</span></div><div class="line">KFbxImpoter* lImporter = KFbxImpoter::Create(mySdkManager, <span class="string">""</span>);</div></pre></td></tr></table></figure>
+<p>FBX SDK可以导入多种格式文件：二进制文件的FBX文件，ASCII格式的FBX文件，早期的FBX格式文件，一些非FBX格式文件(如Collada)。<br>用FBX导入的文件都可以称为导入文件(<em>import file</em>)。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">char</span>* ImportFileName;     <span class="comment">// Full path\filename of the file to be imported</span></div></pre></td></tr></table></figure>
+<p>调用Initialize()指定载入文件的路径与文件名。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">bool</span> lImportStatus = lImporter-&gt;Initialize(pFilename);</div><div class="line"><span class="keyword">if</span> (!lImportStatus)</div><div class="line">    ...<span class="comment">// Problem with the file to be imported</span></div></pre></td></tr></table></figure>
+<p>importer需要知道导入文件的格式。文件扩展名不能提供足够的信息，比如.fbx扩展名的文件可以是二进制FBX文件，也可以是ASCII FBX文件。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> lFileFormat = -<span class="number">1</span>;       // <span class="keyword">File</span> <span class="keyword">format</span> of the <span class="keyword">import</span> <span class="keyword">file</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Detect the file format of the file to be imported</span></div><div class="line"><span class="function"><span class="title">if</span> (!pSdkManager-&gt;</span>G<span class="function"><span class="title">etIOPluginRegistry</span>()-&gt;</span>DetectFileFormat(</div><div class="line">            pFilename,</div><div class="line">            lFileFormat</div><div class="line">            ))</div><div class="line">    &#123; <span class="comment">// ... Error handling code for "file not recognized" ... &#125;</span></div><div class="line">    <span class="function"><span class="title">lImporter</span>-&gt;</span>SetFileFormat(lFileFormat);</div></pre></td></tr></table></figure>
+<h2 id="检查版本号-Checking-version-numbers"><a href="#检查版本号-Checking-version-numbers" class="headerlink" title="检查版本号(Checking version numbers)"></a>检查版本号(Checking version numbers)</h2><p>当前使用FBX SDK存在多个版本: FBX SDK 2010.2, FBX SDK 2010.0, FBX SDK 2009, etc.</p>
+<p>FBX文件类型也有多个版本号。FBX SDK 2010.2可以导出FBX 6.1格式文件，可以导入5.5, 6.0和6.1格式文件。</p>
+<p>我们可以检查使用文件的版本是否支持我们应用使用的FBX SDK版本。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Get the FBX file format version number for the FBX files generated</span></div><div class="line"><span class="comment">// by the version of FBX SDK that you are using.</span></div><div class="line"><span class="attribute">KFbxSdkManager</span>::GetFileFormatVersion (lSDKMajor, lSDKMinor, lSDKRevision);</div><div class="line"></div><div class="line"><span class="comment">// Get the FBX file format versin number of the import file</span></div><div class="line">lImporter-&gt;<span class="selector-tag">GetFileVersion</span>(lFileMajor, lFileMinor, lFileRevision);</div></pre></td></tr></table></figure></p>
+<h2 id="出错处理-Error-handling"><a href="#出错处理-Error-handling" class="headerlink" title="出错处理(Error handling)"></a>出错处理(Error handling)</h2><p>对于大多数FBX类的成员函数，如果调用时触发了一个错误，那么：</p>
+<ul>
+<li>函数返回false.</li>
+<li>objectname-&gt;GetLastErrorString()返回错误消息.</li>
+<li>objectname-&gt;GetLastErrorID()返回整形数据。我们可以使用FBX的枚举值或已定义的值来处理这些错误。</li>
+</ul>
+<p>以下代码是导入文件操作的错误处理示例。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="keyword">bool</span> lImportStatus = lImporter-&gt;Initialize(pFilename);</div><div class="line"><span class="keyword">if</span> (!lImportStatus) <span class="comment">// Problem with the import file</span></div><div class="line">&#123;</div><div class="line">    UI_Printf(<span class="string">"Call to KFbxImporter::Initialize() failed."</span>);</div><div class="line">    UI_Printf(<span class="string">"Error returned: %s"</span>, lImporter-&gt;GetLastErrorString());</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (lImporter-&gt;GetLastErrorID() ==</div><div class="line">            KFbxIO::eFILE_VERSION_NOT_SUPPORTED_YET ||</div><div class="line">            lImporter-&gt;GetLastErrorID() == </div><div class="line">            KFbxIO::eFILE_VERSION_NOT_SUPPORTED_ANYMORE)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// Handle the error...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="载入文件的整体或局部-Loading-all-or-part-of-an-import-file"><a href="#载入文件的整体或局部-Loading-all-or-part-of-an-import-file" class="headerlink" title="载入文件的整体或局部(Loading all or part of an import file)"></a>载入文件的整体或局部(Loading all or part of an import file)</h2><p>我们可以将导入文件的整体或某些局部导入到FBX场景中。例如，我们可以选择是否导入cameras, lights, animation等。<br>这些选择称为导入选项(<em>import options</em>)。以下代码设置了某些导入选项。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Import options determine what kind of data is to be imported.</span></div><div class="line"><span class="comment">// True is default, but here we are setting import options explicitly.</span></div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_MATERIAL,        true);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_TEXTURE,         true);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_LINK,            false);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_SHAPE,           true);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_GOBO,            true);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_ANIMATION,       true);</div><div class="line">IOSREF<span class="selector-class">.setBoolProp</span>(IMP_FBX_GLOBAL_SETTINGS, true);</div></pre></td></tr></table></figure>
+<p>IOSREF是一个便捷的宏。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> IOSREF KFbxIOSettings::IOSettingsRef()</span></div></pre></td></tr></table></figure></p>
+<p>我们可以通过如下代码将文件导入到场景中。<br><figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lStatus = lImporter-&gt;<span class="keyword">Import</span>(pScene);</div></pre></td></tr></table></figure></p>
+<p>importer将场景数据(通过导入选项指定)从导入文件中抽取出来，加载到FBX场景(场景之前可为空或不为空)中。</p>
+<p>若导入文件不是FBX格式，importer会进行必要的转换处理，再加载到FBX场景中。</p>
+<h3 id="导入选项注意事项"><a href="#导入选项注意事项" class="headerlink" title="导入选项注意事项"></a>导入选项注意事项</h3><ul>
+<li>所有选项的默认值都是true，这意味着FBX SDK会导入所有支持的数据。</li>
+<li>默认情况下，导入选项应用于所有的导入文件，除非我们显示改变一个或多个选项。</li>
+<li>一旦导入选项发生改变，那么当前设置会应用于后面所有的导入过程，直至(a)选项改变(b)程序结束。</li>
+<li>在’xfbxiosettingspath.h’可以查看所有导入选项。导入选项前缀是”IMP_”。</li>
+</ul>
+<h2 id="保存场景的整体或局部-Saving-all-or-part-of-a-scene"><a href="#保存场景的整体或局部-Saving-all-or-part-of-a-scene" class="headerlink" title="保存场景的整体或局部(Saving all or part of a scene)"></a>保存场景的整体或局部(Saving all or part of a scene)</h2><p>保存(导出)场景到导出文件与导入文件的过程相似。</p>
+<ul>
+<li>我们必须创建一个KFbxExporter类的导出对象。</li>
+<li>通过设置导出选项(<em>export options</em>)，我们可以控制导出元素或者其他导出因子。所有导出选项可以在’kfbxiosettingspath.h’中查到。<br>导出选项的前缀是”EXP_”。</li>
+<li>我们必须指定导出文件格式。</li>
+<li>我们可以将媒体(textures, sound, movies等)嵌入导出文件，也可以将这些元素存到单独文件中。</li>
+</ul>
+<h2 id="将媒体嵌入到FBX文件中-Embedding-media-in-FBX-files"><a href="#将媒体嵌入到FBX文件中-Embedding-media-in-FBX-files" class="headerlink" title="将媒体嵌入到FBX文件中(Embedding media in FBX files)"></a>将媒体嵌入到FBX文件中(Embedding media in FBX files)</h2><p>有个选项指定FBX如何处理场景媒体(textures, sound, movies等)导出文件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bool pEmbedMedia;</div><div class="line">... // <span class="keyword">Set</span> pEmbedMedia <span class="keyword">to</span> <span class="literal">true</span> <span class="keyword">or</span> <span class="literal">false</span></div><div class="line"></div><div class="line">IOSREF.SetBoolProp(EXP_FBX_EMBEDDED, pEmbedMedia);</div></pre></td></tr></table></figure>
+<ul>
+<li>如果选项为true，媒体会直接嵌入到导出文件中。只有导出FBX二进制文件时，这个选项才可用。</li>
+<li>如果选项为false，媒体不会嵌入到导出文件中。FBX文件会包含媒体文件的相关链接。</li>
+</ul>
+<p>当FBX SDK导入媒体文件时，媒体数据会被提取到filename.fbm\文件夹中，这个文件夹与filename.fbx位于同一文件夹中。<br>如果filename.fbm\不存在，则会先创建一个filename.fbm\。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fbxsdk-translation-import-export/" rel="tag">#fbxsdk translation import/export</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/07/MetaProgramming-Ruby-1-1/" rel="next" title="The M Word">
+                <i class="fa fa-chevron-left"></i> The M Word
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/12/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+    <!-- 多说评论框 start -->
+    	<div class="ds-thread" data-thread-key="<%= post.layout %>-<%= post.slug %>" data-title="<%= post.title %>" data-url="<%= page.permalink %>"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fufesou"};
+    	(function() {
+    		var ds = document.createElement('script');
+    		ds.type = 'text/javascript';ds.async = true;
+    		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    		ds.charset = 'UTF-8';
+    		(document.getElementsByTagName('head')[0] 
+    		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+    	})();
+    	</script>
+    <!-- 多说公共JS代码 end -->
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="fufesou" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">fufesou</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Kategorien</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">Tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#fbxsdk命名规则"><span class="nav-number">1.</span> <span class="nav-text">fbxsdk命名规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过SDK-manager管理内存-Managing-memory-with-the-SDK-manager"><span class="nav-number">2.</span> <span class="nav-text">通过SDK manager管理内存(Managing memory with the SDK manager)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化-创建-一个FBX类对象"><span class="nav-number">2.1.</span> <span class="nav-text">初始化(创建)一个FBX类对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁FBX类对象"><span class="nav-number">2.2.</span> <span class="nav-text">销毁FBX类对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#销毁FBX类对象时注意"><span class="nav-number">2.3.</span> <span class="nav-text">销毁FBX类对象时注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清理FBX应用内存"><span class="nav-number">2.4.</span> <span class="nav-text">清理FBX应用内存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建空场景-Creating-am-emptry-secne"><span class="nav-number">3.</span> <span class="nav-text">创建空场景(Creating am emptry secne)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建文件impoter-Creating-a-file-impoter"><span class="nav-number">4.</span> <span class="nav-text">创建文件impoter(Creating a file impoter)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查版本号-Checking-version-numbers"><span class="nav-number">5.</span> <span class="nav-text">检查版本号(Checking version numbers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出错处理-Error-handling"><span class="nav-number">6.</span> <span class="nav-text">出错处理(Error handling)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#载入文件的整体或局部-Loading-all-or-part-of-an-import-file"><span class="nav-number">7.</span> <span class="nav-text">载入文件的整体或局部(Loading all or part of an import file)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入选项注意事项"><span class="nav-number">7.1.</span> <span class="nav-text">导入选项注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存场景的整体或局部-Saving-all-or-part-of-a-scene"><span class="nav-number">8.</span> <span class="nav-text">保存场景的整体或局部(Saving all or part of a scene)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将媒体嵌入到FBX文件中-Embedding-media-in-FBX-files"><span class="nav-number">9.</span> <span class="nav-text">将媒体嵌入到FBX文件中(Embedding media in FBX files)</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fufesou</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'fufesou';
+      var disqus_identifier = '2015/12/08/fbxsdk-1-IO/';
+      var disqus_title = 'fbxsdk file inport/export(译)';
+      var disqus_url = 'http://yoursite.com/2015/12/08/fbxsdk-1-IO/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+  <a href="https://github.com/fufesou"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/121cd7cbdc3e4855075ea8b558508b91ac463ac2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png"></a>
+
+</body>
+</html>
